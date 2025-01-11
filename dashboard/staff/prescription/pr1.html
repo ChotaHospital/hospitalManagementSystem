@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Prescription Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="prescription-form">
+        <header>
+            <h1>Doctor's Medical Prescription</h1>
+        </header>
+        <form id="prescriptionForm">
+            <section class="patient-info">
+                <h2>Patient Information</h2>
+                <label for="name">Patient's Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age">
+                <label for="gender">Sex:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="occupation">Occupation:</label>
+                <input type="text" id="occupation" name="occupation">
+            </section>
+            <section class="diagnosis-info">
+                <h2>Diagnosis</h2>
+                <label for="diagnosedWith">Diagnosed With:</label>
+                <textarea id="diagnosedWith" name="diagnosedWith"></textarea>
+                <label for="bloodPressure">Blood Pressure:</label>
+                <input type="text" id="bloodPressure" name="bloodPressure">
+                <label for="pulseRate">Pulse Rate:</label>
+                <input type="text" id="pulseRate" name="pulseRate">
+                <label for="weight">Weight:</label>
+                <input type="text" id="weight" name="weight">
+            </section>
+            <section class="medications">
+                <h2>Medications</h2>
+                <div class="medication-row">
+                    <label>Drug:</label>
+                    <input type="text" name="drug">
+                    <label>Unit:</label>
+                    <input type="text" name="unit">
+                    <label>Dosage (Per Day):</label>
+                    <input type="text" name="dosage">
+                </div>
+            </section>
+            <section class="additional-info">
+                <h2>Additional Information</h2>
+                <label for="diet">Diet to Follow:</label>
+                <textarea id="diet" name="diet"></textarea>
+                <label for="history">Brief History of Patient:</label>
+                <textarea id="history" name="history"></textarea>
+            </section>
+            <section class="doctor-info">
+                <h2>Doctor's Details</h2>
+                <label for="doctorName">Doctor's Name:</label>
+                <input type="text" id="doctorName" name="doctorName" required>
+                <label for="signature">Doctor's Signature:</label>
+                <input type="file" id="signature" name="signature" accept="image/*">
+            </section>
+            <section class="footer">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </section>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

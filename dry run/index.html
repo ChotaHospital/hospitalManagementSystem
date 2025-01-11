@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">CAPGO</div>
+    <nav class="menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Chats</a></li>
+        <li><a href="#">Partners</a></li>
+        <li class="active"><a href="#">Tracking</a></li>
+        <li><a href="#">Analysis</a></li>
+        <li><a href="#">History</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </nav>
+    <button class="new-request-btn">+ Create new Request</button>
+    <div class="user-info">Mose.Mr</div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="header">
+      <input type="text" placeholder="Search" class="search-bar">
+      <select class="status-filter">
+        <option value="all">All</option>
+        <option value="in-transit">In Transit</option>
+        <option value="delivered">Delivered</option>
+      </select>
+      <button class="add-load-btn">+ Add Load</button>
+    </header>
+
+    <!-- Content Sections -->
+    <section class="tracking-section">
+      <div class="tracking-list">
+        <div class="tracking-item">
+          <div class="tracking-id">DV-1223</div>
+          <div class="driver-info">
+            <p>Jordan Smith</p>
+            <p>124km</p>
+          </div>
+          <p class="status">In Transit</p>
+        </div>
+        <!-- Add more tracking items here -->
+      </div>
+      <div class="tracking-map">
+        <p>Map Area (Integrate Google Maps/Leaflet here)</p>
+      </div>
+    </section>
+
+    <section class="analytics-delivery-section">
+      <div class="analytics">
+        <h2>Analytic View</h2>
+        <canvas id="analytics-chart"></canvas>
+      </div>
+      <div class="delivery-status">
+        <h2>Delivery Vehicles</h2>
+        <p>Vehicles operating on the road: 98</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

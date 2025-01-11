@@ -1,0 +1,164 @@
+/* General Styling */
+body {
+    font-family:sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8faff;
+    color: #333;
+  }
+  
+  .main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header Styling */
+  .header {
+    background-color: #c0e4ff;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 98%;
+    border-radius: 16px;
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .search-main {
+    margin: 20px 20px 10px 0;
+    
+  }
+  
+  #search-bar {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 20px;
+    box-shadow: #000000;
+  }
+  
+  #select-button {
+    background-color: #007BFf;
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 2px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #select-button.active {
+    background-color:  #ffca43;
+    color: #000000;
+  }
+  
+  #select-button:hover {
+    background-color: #ffca43;
+    color: #000;
+  }
+  
+  #selected-count {
+    margin-top: 10px;
+    font-size: 1em;
+  }
+  
+  /* Scrollable List */
+  .appointment-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 15px;
+  }
+  
+  .appointment-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: margin-left 0.5s ease, width 0.5s ease;
+    width: 97%;
+  }
+  
+ 
+  
+  .appointment-card.shrinked {
+    width: calc(100% - 150px);
+    margin-left: 100px;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .patient-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .patient-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+  }
+  
+  .card-details {
+    display: none;
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .toggle-details {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 7px 9px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .toggle-details:hover {
+    background-color: #0056b3;
+  }
+  
+  .select-checkbox-wrapper {
+    display: none;
+    position: absolute;
+    left: -70px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .appointment-card.select-mode .select-checkbox-wrapper {
+    display: block;
+  }
+  #fontt
+  {
+    font-size: 13px;
+  }
+  #age
+  {
+    font-size: 13px;
+  }
+  #time
+  {
+    font-size: 13px;
+  }

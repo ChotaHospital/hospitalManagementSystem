@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=notifications"
+    />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <header class="sidebar-header">
+        <a href="#" class="header-logo">
+          <img src="img/titleLogo.png" alt="Logo" />
+        </a>
+
+        <button class="toggler sidebar-toggler">
+          <span class="material-symbols-rounded"> chevron_left </span>
+        </button>
+        <button class="toggler menu-toggler">
+          <span class="material-symbols-rounded"> menu </span>
+        </button>
+      </header>
+
+      <!-- <hr> -->
+      <!-- <div class="line"></div> -->
+
+      <nav class="sidebar-nav">
+        <ul class="nav-list primary-nav">
+          <li class="nav-item">
+            <a
+              href="http://localhost/hospitalmanagementsystem/dashboard/patient/dashboard.html"
+              class="nav-link"
+            >
+              <span class="nav-icon material-symbols-rounded"> home </span>
+              <span class="nav-label">Home</span>
+            </a>
+            <span class="nav-tooltip">Home</span>
+          </li>
+          <li class="nav-item">
+            <a
+              href="http://localhost/hospitalmanagementsystem/dashboard/patient/patient/index.html"
+              class="nav-link"
+            >
+              <span class="material-symbols-rounded"> notifications </span>
+              <span class="nav-label">Reminder</span>
+            </a>
+            <span class="nav-tooltip">Reminder</span>
+          </li>
+          <li class="nav-item">
+            <a
+              href="http://localhost/hospitalmanagementsystem/dashboard/patient/prescription.html"
+              class="nav-link"
+            >
+              <span class="material-symbols-rounded"> summarize </span>
+              <span class="nav-label">Reports</span>
+            </a>
+            <span class="nav-tooltip">Reports</span>
+          </li>
+          <li class="nav-item">
+            <a
+              href="http://localhost/hospitalmanagementsystem/dashboard/patient/appointment.html"
+              class="nav-link"
+            >
+              <span class="material-symbols-rounded"> event_upcoming </span>
+              <span class="nav-label">Appointment List</span>
+            </a>
+            <span class="nav-tooltip">Appointment List</span>
+          </li>
+        </ul>
+
+        <ul class="nav-list secondary-nav">
+          <div class="line"></div>
+          <li class="nav-item">
+            <a
+              href="../../AppointmentForm/index.html"
+              class="nav-link"
+              target="_blank"
+            >
+              <span class="material-symbols-rounded"> add </span>
+              <span class="nav-label">Book Appointment</span>
+            </a>
+            <span class="nav-tooltip">Book Appointment</span>
+          </li>
+          <li class="nav-item">
+            <a href="logout.php" class="nav-link">
+              <span class="nav-icon material-symbols-rounded"> logout </span>
+              <span class="nav-label">Logout </span>
+            </a>
+            <span class="nav-tooltip">Logout </span>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="section">
+      <div class="top">
+        <p class="portal">
+          <span class="material-symbols-rounded"> person </span>Patient
+        </p>
+        <div class="datetime">
+          <div class="date"></div>
+          <div class="time"></div>
+        </div>
+      </div>
+
+      <div class="main"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
