@@ -5,10 +5,11 @@ body {
     padding: 0;
     background-color: #f8faff;
     color: #333;
+    height: 100vh;
   }
   
   .main {
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
   }

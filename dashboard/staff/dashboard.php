@@ -158,7 +158,13 @@
           <button id="date-14">14 Dec</button>
         </div> -->
 
-        <div class="date-picker"></div>
+        <div class="date-picker">
+          <a href="?time_slot=all" class="date-btn">All</a>
+          <a href="?time_slot=morning" class="date-btn">Morning</a>
+          <a href="?time_slot=noon" class="date-btn">Noon</a>
+          <a href="?time_slot=evening" class="date-btn">Evening</a>
+        </div>
+
 
         <!-- Appointments Section -->
         <div class="appointment-section">

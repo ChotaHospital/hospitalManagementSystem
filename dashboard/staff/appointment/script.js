@@ -22,7 +22,7 @@ selectButton.addEventListener("click", async function () {
         selectedIds.push(card.dataset.id); // Use the card's data-id attribute
       }
     });
-
+ 
     if (selectedIds.length > 0) {
       try {
         const response = await fetch("delete_appointments.php", {

@@ -120,6 +120,16 @@ document.addEventListener("DOMContentLoaded", function () {
       bloodType: "AB-",
       lastDiagnosis: "HIV",
     },
+    {
+      id: 21,
+      name: "John Doe",
+      dob: "1980-01-01",
+      lastVisit: "2023-05-15",
+      age: 43,
+      photo: "https://randomuser.me/api/portraits/men/1.jpg",
+      bloodType: "A+",
+      lastDiagnosis: "Common Cold",
+    },
   ];
 
   let previousSearches = [];
@@ -133,12 +143,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function performSearch() {
     const searchTerm = searchInput.value.toLowerCase();
-    const results = patients.filter(
-      (patient) =>
-        patient.name.toLowerCase().includes(searchTerm) ||
-        patient.id.toString().includes(searchTerm)
-    );
-
+    const results = patients.filter((patient) => {
+      const isNameMatch = patient.name.toLowerCase().includes(searchTerm);
+      const isIdMatch = patient.id.toString() === searchTerm;
+      return isNameMatch || isIdMatch;
+    });
     displayResults(results);
     updatePreviousSearches(results);
   }
@@ -207,6 +216,58 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.viewHistory = function (patientId) {
-    alert(`Viewing history for patient ID: ${patientId}`);
+    window.open(
+      `http://localhost/hospitalmanagementsystem/dashboard/staff/patient/view_prescriptions.php?patient_id=${patientId}`,
+      "_blank"
+    );
   };
 });
+
+/**
+ *
+ * @param {Date} date
+ */
+
+function formatTime(date) {
+  const hours = date.getHours() % 24;
+  const mins = date.getMinutes();
+
+  return `${hours.toString().padStart(2, "0")}:${mins
+    .toString()
+    .padStart(2, "0")}`;
+}
+
+const timeElement = document.querySelector(".time");
+const dateElement = document.querySelector(".date");
+
+/**
+ *
+ * @param {Date} date
+ */
+
+function formatDate(date) {
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const mon = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  return `${days[date.getDay()]} ${date.getDate()} ${mon[date.getMonth()]}`;
+}
+
+setInterval(() => {
+  const now = new Date();
+
+  timeElement.textContent = formatTime(now);
+  dateElement.textContent = formatDate(now);
+}, 200);

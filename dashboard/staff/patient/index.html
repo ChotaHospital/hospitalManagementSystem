@@ -89,24 +89,38 @@
         </ul>
       </nav>
     </aside>
-    <main class="content">
-      <div class="search-container">
-        <h1>Patient Search</h1>
-        <div class="search-box">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Enter patient name or ID"
-          />
-          <button id="searchButton">Search</button>
+    
+    <div class="section">
+      <div class="top">
+        <p class="portal">
+          <span class="material-symbols-rounded"> person </span>Staff
+        </p>
+        <div class="datetime">
+          <div class="date"></div>
+          <div class="time"></div>
         </div>
-        <div id="searchResults"></div>
+        </div>
+        <main class="content">
+          <div class="search-container">
+            <h1>Patient Search</h1>
+            <div class="search-box">
+              <input
+              type="text"
+              id="searchInput"
+              placeholder="Enter patient name or ID"
+              />
+              <button id="searchButton">Search</button>
+            </div>
+            <div id="searchResults">
+              
+            </div>
+          </div>
+          <div class="previous-searches">
+            <h2>Previous Searches</h2>
+            <div id="previousSearchResults" class="previous-search-results"></div>
+          </div>
+        </main>
       </div>
-      <div class="previous-searches">
-        <h2>Previous Searches</h2>
-        <div id="previousSearchResults" class="previous-search-results"></div>
-      </div>
-    </main>
-    <script src="script.js"></script>
-  </body>
+        <script src="script.js"></script>
+      </body>
 </html>

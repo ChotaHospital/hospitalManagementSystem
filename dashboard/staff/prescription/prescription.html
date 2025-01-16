@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Prescription</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -112,7 +112,7 @@
           <header>
             <big>Doctor's Medical Prescription</big>
           </header>
-          <form id="prescriptionForm">
+          <form id="prescriptionForm" action="submit_prescription.php" method="post">
             <section class="doctor-info">
               <big>Doctor's Details</big>
               <label for="doctorName">Doctor's Name:</label>
@@ -131,6 +131,14 @@
               <big>Patient Information</big>
               <div class="form-group name-group">
                 <div>
+                  <label for="PAITENT_ID">Patient ID</label>
+                  <input
+                    type="text"
+                    id="PAITENT_ID"
+                    name="patient_id"
+                    required
+                  />
+                <div>
                   <label for="first_name">First Name</label>
                   <input
                     type="text"
@@ -148,9 +156,9 @@
               <input type="number" id="age" name="age" />
               <label for="gender">Sex:</label>
               <select id="gender" name="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
               </select>
               <label for="occupation">Occupation:</label>
               <input type="text" id="occupation" name="occupation" />
@@ -167,23 +175,30 @@
               <label for="weight">Weight:</label>
               <input type="text" id="weight" name="weight" />
             </section>
+
             <section class="medications">
-              <h2>Medications</h2>
-              <div class="medication-row">
-                <label>Drug:</label>
-                <input type="text" name="drug" />
-                <label>Unit:</label>
-                <input type="text" name="unit" />
-                <label>Dosage (Per Day):</label>
-                <input type="text" name="dosage" />
+              <div class="headingMeds">
+                  <h2>Medications</h2>
+                  <button id="add-medication" class="addbtn">+</button>
               </div>
-            </section>
+          
+              <div class="medication-row">
+                  <label>Drug</label>
+                  <textarea name="medications[0][name]"></textarea>
+    <label>Dosage (Per Day)</label>
+    <textarea name="medications[0][dosage]"></textarea>
+    <label>Duration</label>
+    <textarea name="medications[0][remark]"></textarea>
+              </div>
+          </section>
+          
             <section class="additional-info">
               <h2>Additional Information</h2>
-              <label for="diet">Diet to Follow:</label>
-              <textarea id="diet" name="diet"></textarea>
-              <label for="history">Brief History of Patient:</label>
-              <textarea id="history" name="history"></textarea>
+              <label for="history"></label>
+              <textarea id="history" name="info"></textarea>
+              <!-- <input type="text" name="info" class="additional-info-input"> -->
+              <label>Follow Up:</label>
+              <input id="followUp" type="date" name="followUp" />
             </section>
             <section class="footer">
               <button type="submit">Submit</button>
@@ -193,7 +208,6 @@
         </div>
       </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>

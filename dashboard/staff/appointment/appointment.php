@@ -89,7 +89,7 @@
           </li>
         </ul>
       </nav>
-    </aside>
+    </aside> 
 
     <div class="section">
       <div class="top">
@@ -121,5 +121,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="scripts.js"></script>
   </body>
 </html>

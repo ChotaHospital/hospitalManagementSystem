@@ -17,7 +17,8 @@
 
 body {
   background: linear-gradient(#f1faff, #cbe4ff);
-  min-height: 100vh;
+  /* height: calc(100vh + 100vh); */
+  background-size: cover;
 }
 
 .sidebar {
@@ -264,10 +265,6 @@ body {
   width: calc(100% - 131px);
   left: 131px;
 }
-.form-group.name-group
-{
-  .
-}
 
 .top {
   display: flex;
@@ -312,9 +309,19 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.prescription-form {
+  overflow: hidden; 
+  box-sizing: border-box;
+}
+
+
+.prescription-form {
+  min-height: 500px;
+}
+
 header {
   text-align: center;
-  background-color:#c0e4ff;
+  background-color: #c0e4ff;
   color: rgb(0, 0, 0);
   padding: 10px;
   border-radius: 8px 8px 0 0;
@@ -334,7 +341,9 @@ label {
   margin-top: 10px;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -347,19 +356,32 @@ textarea {
   height: 80px;
 }
 
-.medication-row {
+.medications {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
-.medication-row input {
-  flex: 1;
+.medications .headingMeds {
+  display: flex;
+  justify-content: space-between;
 }
+
+.medication-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* margin-top: 10px; */
+}
+
+/* .medication-row textarea {
+  flex: 1;
+} */
 
 button {
   padding: 10px 15px;
-  background-color:#c0e4ff;    ;
+  background-color: #c0e4ff;
   color: black;
   border: none;
   border-radius: 4px;
@@ -371,10 +393,48 @@ button:hover {
 }
 
 button[type="reset"] {
-  background-color:#c0e4ff;
+  background-color: #c0e4ff;
   color: black;
 }
 
 button[type="reset"]:hover {
   background-color: #b3b3b3;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: linear-gradient(#f1faff, #cbe4ff); /* Replace with your desired background color */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.additional-info-input {
+  height: 70px;
+  margin: 0;
+  padding: 10px;
+  display: block; 
+  width: 100%; 
+  box-sizing: border-box; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  font-family: Arial, sans-serif; 
+  font-size: 14px; 
+  resize: vertical; 
+}
+
+.medication-row label {
+  display: block;
+  margin: 5px 0;
+}
+.medication-row textarea {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 35px;
+  flex: 1;
+  padding: 8px;
+  resize: none;
 }

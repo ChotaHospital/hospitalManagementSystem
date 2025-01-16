@@ -81,265 +81,77 @@ setInterval(() => {
   timeElement.textContent = formatTime(now);
   dateElement.textContent = formatDate(now);
 }, 200);
-
 //
 
 //
-const getCSSVariable = (variable, fallback) =>
-  getComputedStyle(document.documentElement)
-    .getPropertyValue(variable)
-    .trim() || fallback;
 
-const colorPrimary = getCSSVariable("--color-primary", "#3498db");
-const colorLabel = getCSSVariable("--color-label", "#7f8c8d");
-const fontFamily = getCSSVariable("--font-family", "Arial, sans-serif");
+document.addEventListener("DOMContentLoaded", () => {
+  const addMedicationButton = document.getElementById("add-medication");
+  const medicationSection = document.querySelector(".medications");
+  let medicationCount = 1; // Start from the second medication row, as the first one is already present.
 
-const sharedStyles = {
-  fontFamily: fontFamily,
-  colors: colorLabel,
-};
+  addMedicationButton.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent form submission when the button is clicked
 
-const defaultOptions = {
-  chart: {
-    toolbar: { show: false },
-    zoom: { enabled: false },
-    width: "100%",
-    height: 180,
-    offsetY: 18,
-  },
-  dataLabels: { enabled: false },
-};
+    // Increment the medication count
+    medicationCount++;
 
-const areaChartOptions = {
-  ...defaultOptions,
-  chart: {
-    ...defaultOptions.chart,
-    type: "area",
-  },
-  tooltip: {
-    enabled: true,
-    style: { fontFamily: sharedStyles.fontFamily },
-    y: {
-      formatter: (value) => `${value.toLocaleString()}`, // Adds commas for thousands
-    },
-  },
-  series: [
-    {
-      name: "Views",
-      data: [15, 50, 18, 90],
-    },
-  ],
-  colors: [colorPrimary],
-  fill: {
-    type: "gradient",
-    gradient: {
-      type: "vertical",
-      opacityFrom: 1,
-      opacityTo: 0,
-      stops: [0, 100],
-      colorStops: [
-        { offset: 0, opacity: 0.2, color: colorPrimary },
-        { offset: 100, opacity: 0, color: colorPrimary },
-      ],
-    },
-  },
-  stroke: {
-    colors: [colorPrimary],
-    lineCap: "round",
-  },
-  grid: {
-    borderColor: "rgba(0, 0, 0, 0)",
-    padding: {
-      top: -30,
-      right: 0,
-      bottom: -8,
-      left: 20, // Increased padding for the left
-    },
-  },
-  markers: {
-    strokeColors: colorPrimary,
-  },
-  yaxis: { show: false },
-  xaxis: {
-    labels: {
-      show: true,
-      floating: true,
-      style: {
-        colors: sharedStyles.colors,
-        fontFamily: sharedStyles.fontFamily,
-      },
-    },
-    axisBorder: { show: false },
-    crosshairs: { show: false },
-    categories: ["Week 1", "Week 2", "Week 3", "Week 4"],
-    tickPlacement: "on", // Ensures ticks align with labels properly
-  },
-};
+    // Create a new medication row
+    const newRow = document.createElement("div");
+    newRow.classList.add("medication-row");
 
-const renderChart = (selector, options) => {
-  const chartElement = document.querySelector(selector);
-  if (chartElement) {
-    const chart = new ApexCharts(chartElement, options);
-    chart.render();
-  } else {
-    console.error(`Element with selector "${selector}" not found.`);
-  }
-};
+    // Add input fields for the new medication row
+    newRow.innerHTML = `
+      <label for="drug-${medicationCount}">Drug:</label>
+      <textarea type="text" id="drug-${medicationCount}" name="medications[${
+      medicationCount - 1
+    }][name]" ></textarea>
+      <label for="dosage-${medicationCount}">Dosage (Per Day):</label>
+      <textarea  id="dosage-${medicationCount}" name="medications[${
+      medicationCount - 1
+    }][dosage]" ></textarea>
+      <label for="remark-${medicationCount}">Remark:</label>
+      <textarea type="text" id="remark-${medicationCount}" name="medications[${
+      medicationCount - 1
+    }][remark]"  ></textarea>
+      <button class="remove-medication" aria-label="Remove this medication">-</button>
+    `;
 
-renderChart(".area-chart", areaChartOptions);
+    // Append the new row to the medications section
+    medicationSection.appendChild(newRow);
 
-// const dateButtons = document.querySelectorAll(".date-picker button");
-// const dateButtons = document.querySelectorAll(".date-picker button");
-// let currentDate = new Date();
-
-// function formatDate(date) {
-//   return date.toLocaleDateString("en-US", {
-//     day: "numeric",
-//     month: "short",
-//   });
-// }
-
-// function highlightCurrentDate() {
-//   dateButtons.forEach((button) => {
-//     const buttonDate = new Date(button.textContent + " 2024");
-//     if (buttonDate.toDateString() === currentDate.toDateString()) {
-//       button.style.fontWeight = "bold";
-//       button.style.backgroundColor = "#dfe6e9";
-//     } else {
-//       button.style.fontWeight = "normal";
-//       button.style.backgroundColor = "transparent";
-//     }
-//   });
-// }
-
-// function setDates() {
-//   const startDate = new Date("2024-12-10");
-//   dateButtons.forEach((button, index) => {
-//     const date = new Date(startDate);
-//     date.setDate(startDate.getDate() + index);
-//     button.textContent = formatDate(date);
-
-//     button.addEventListener("click", () => {
-//       dateButtons.forEach((btn) => {
-//         btn.style.fontWeight = "normal";
-//         btn.style.backgroundColor = "transparent";
-//         btn.style.color = "#000";
-//       });
-//       // button.style.fontWeight = 'bold';  // Highlight clicked button
-//       button.style.backgroundColor = "#6c5ce7";
-//       button.style.color = "#fff";
-//     });
-//   });
-//   highlightCurrentDate();
-// }
-
-// setDates();
-
-// const dateButtons = document.querySelectorAll(".date-picker button");
-// let currentDate = new Date();
-
-// function formatDate(date) {
-//   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-//   return `${days[date.getDay()]}  ${date.getDate()}`; // Day and Date only
-// }
-
-// function highlightCurrentDate() {
-//   dateButtons.forEach((button) => {
-//     const buttonDate = new Date(button.textContent + " 2024");
-//     if (buttonDate.toDateString() === currentDate.toDateString()) {
-//       button.style.fontWeight = "bold";
-//       button.style.backgroundColor = "#dfe6e9";
-//     } else {
-//       button.style.fontWeight = "normal";
-//       button.style.backgroundColor = "transparent";
-//     }
-//   });
-// }
-
-// function setDates() {
-//   const startDate = new Date("2024-12-10");
-//   dateButtons.forEach((button, index) => {
-//     const date = new Date(startDate);
-//     date.setDate(startDate.getDate() + index);
-//     button.textContent = formatDate(date); // Set the formatted date like "Thu 12"
-
-//     button.addEventListener("click", () => {
-//       dateButtons.forEach((btn) => {
-//         btn.style.fontWeight = "normal";
-//         btn.style.backgroundColor = "transparent";
-//         btn.style.color = "#000";
-//       });
-//       // button.style.fontWeight = 'bold';  // Highlight clicked button
-//       button.style.backgroundColor = "#6c5ce7";
-//       button.style.color = "#fff";
-//     });
-//   });
-//   highlightCurrentDate();
-// }
-
-// setDates();
-
-const datePicker = document.querySelector(".date-picker");
-let currentDate = new Date(); // Tracks the real-time current date
-let selectedDate = null; // Tracks the user-selected date
-
-function formatDate(date) {
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  return `${days[date.getDay()]} ${date.getDate()}`; // Example: "Thu 12"
-}
-
-function createDatePicker(centerDate) {
-  // Clear the date picker container
-  datePicker.innerHTML = "";
-
-  // Generate the range of dates (-2, -1, 0, +1, +2 relative to the center date)
-  for (let i = -2; i <= 2; i++) {
-    const date = new Date(centerDate);
-    date.setDate(centerDate.getDate() + i);
-
-    // Create the date element
-    const dateElement = document.createElement("div");
-    dateElement.textContent = formatDate(date);
-    dateElement.classList.add("dateNew");
-
-    // Highlight the current date if no user selection, otherwise highlight the selected date
-    if (selectedDate === null && i === 0) {
-      dateElement.classList.add("current-date");
-    } else if (selectedDate && date.toDateString() === selectedDate.toDateString()) {
-      dateElement.classList.add("current-date");
-    }
-
-    // Add click event listener to handle manual selection
-    dateElement.addEventListener("click", () => {
-      // Remove the highlight from all dates
-      document.querySelectorAll(".dateNew").forEach((el) => {
-        el.classList.remove("current-date");
-      });
-
-      // Highlight the clicked date
-      dateElement.classList.add("current-date");
-      selectedDate = date; // Update the manually selected date
+    // Add event listener to the remove button
+    const removeButton = newRow.querySelector(".remove-medication");
+    removeButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      newRow.remove();
     });
+  });
+});
 
-    datePicker.appendChild(dateElement);
-  }
-}
+// Disable future dates
+var today = new Date().toISOString().split("T")[0];
+document.getElementById("dob").setAttribute("max", today);
 
-function checkForDateChange() {
-  setInterval(() => {
-    const now = new Date(); // Get the real-time date
+// Disable past dates
+var today = new Date().toISOString().split("T")[0];
+document.getElementById("followUp").setAttribute("min", today);
 
-    // If the date changes and no date is manually selected, update the picker
-    if (
-      now.toDateString() !== currentDate.toDateString() &&
-      selectedDate === null
-    ) {
-      currentDate = now; // Update the global current date
-      createDatePicker(currentDate); // Recreate the date picker
+document.querySelectorAll('.medication-row input').forEach(input => {
+  input.addEventListener('keydown', event => {
+    if (event.key === 'Enter' && event.shiftKey) {
+      // Prevent the default action
+      event.preventDefault();
+
+      // Insert a newline character into the input field
+      const cursorPosition = input.selectionStart;
+      input.value =
+        input.value.substring(0, cursorPosition) +
+        '\n' +
+        input.value.substring(cursorPosition);
+
+      // Move the cursor to after the newline
+      input.selectionStart = input.selectionEnd = cursorPosition + 1;
     }
-  }, 1000); // Check every second
-}
-
-// Initialize the date picker and start the date change checker
-createDatePicker(currentDate);
-checkForDateChange();
+  });
+});
